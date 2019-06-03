@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>	</title>
+	<style type="text/css">
+		.window{
+			height: 150px;
+			width:400px;
+			
+			position: absolute;
+			top:-50%;
+			transition: 1s;
+			left:40%;
+
+		}
+	</style>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+	<div class="game">
+		<h1 class="text-center">POINTS</h1>
+		<h1 class="points text-center">0</h1>
+		
+
+		<div class="container">
+			<div class="row">
+				<div class="col-3 border" style="height: 300px; background: #fbbb11">
+					<img class="jake " src="jake.png" alt="" style="display: none">
+					<img class="king w-75" src="Ice_King.png" alt="" style="display: none">
+					<img class="bimo w-100" src="bimo.png" alt="" style="display: none">
+				</div>
+				<div class="col-3 border" style="height: 300px; background: #fbbb11">
+					<img class="jake" src="jake.png"  alt="" style="display: none">
+					<img class="king w-75" src="Ice_King.png" alt="" style="display: none">
+					<img class="bimo w-100" src="bimo.png" alt="" style="display: none">
+
+				</div>
+				<div class="col-3 border" style="height: 300px; background: #fbbb11">
+					<img class="jake" src="jake.png"  alt="" style="display: none">
+					<img class="king w-75" src="Ice_King.png" alt="" style="display: none">
+					<img class="bimo w-100" src="bimo.png" alt="" style="display: none">
+
+				</div>
+				<div class="col-3 border" style="height: 300px; background: #fbbb11">
+					<img class="jake" src="jake.png"  alt="" style="display: none">
+					<img class="king w-75" src="Ice_King.png" alt="" style="display: none">
+					<img class="bimo w-100" src="bimo.png" alt="" style="display: none">
+
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-3 border" style="height: 300px; background: #fbbb11">
+					<img class="jake" src="jake.png" alt="" style="display: none">
+					<img class="king w-75" src="Ice_King.png" alt="" style="display: none">
+					<img class="bimo w-100" src="bimo.png" alt="" style="display: none">
+
+				</div>
+				<div class="col-3 border" style="height: 300px; background: #fbbb11">
+					<img class="jake" src="jake.png"  alt="" style="display: none">
+					<img class="king w-75" src="Ice_King.png" alt="" style="display: none">
+					<img class="bimo w-100" src="bimo.png" alt="" style="display: none">
+
+				</div>
+				<div class="col-3 border" style="height: 300px; background: #fbbb11">
+					<img class="jake" src="jake.png"  alt="" style="display: none">
+					<img class="king w-75" src="Ice_King.png" alt="" style="display: none">
+					<img class="bimo w-100" src="bimo.png" alt="" style="display: none">
+
+				</div>
+				<div class="col-3 border" style="height: 300px; background: #fbbb11">
+					<img class="jake" src="jake.png"  alt="" style="display: none">
+					<img class="king w-75" src="Ice_King.png" alt="" style="display: none">
+					<img class="bimo w-100" src="bimo.png" alt="" style="display: none">
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="window">
+		<h1 class="text text-center mt-5"></h1>
+	</div>
+
+
+	<script>
+	let bimo = document.querySelectorAll(".bimo")
+	let jake = document.querySelectorAll(".jake")
+	let king = document.querySelectorAll(".king")
+	let score = document.querySelector(".points")
+	let points = 0
+
+	let interv2 = function(){ 
+		let rand = Math.random()*8
+		let round = Math.round(rand)
+
+		bimo[round].style.display = "block";
+		for (let i=0; i<1000; i=i+1){
+			bimo[round].onclick = function(){
+				
+			}
+			}
+		
+		let proverka = function() {
+			bimo[round].style.display = "none";
+			
+		}
+		setTimeout(proverka,500) 
+	}
+
+	
+
+	let interv = function(){ 
+		let rand = Math.random()*8
+		let round = Math.round(rand)
+
+		jake[round].style.display = "block";
+		
+		for (let i=0; i<1000; i=i+1){
+			jake[round].onclick = function(){
+				points = points + 10
+				score.innerHTML = points
+			}
+			
+		}
+		let proverka = function() {
+			jake[round].style.display = "none";
+			
+		}
+		setTimeout(proverka,500) 
+	}
+
+	let interv1 = function(){ 
+		let rand = Math.random()*8
+		let round = Math.round(rand)
+		king[round].style.display = "block"
+		for (let i=0; i<1000; i=i+1){
+			
+			king[round].onclick = function(){
+				points = points - 10
+				score.innerHTML = points
+			}
+		}
+		let proverka = function() {
+			king[round].style.display = "none"
+		}
+		setTimeout(proverka,500) 
+	}
+	let endinterv1 = setInterval(interv1,500)
+	let endinterv2 = setInterval(interv2,500)
+	let endinterv = setInterval(interv,500)
+
+	let box = document.querySelector(".window")
+	let textt = document.querySelector(".text")
+
+	let proverka = function() {
+
+		if ( points == 10 ){
+			box.style.top = "40%"
+			box.style.background= "red"
+			
+			textt.innerHTML = "You win"
+		}
+		else {
+			box.style.top = "40%"
+			box.style.background= "red"
+			
+			textt.innerHTML = "You lose"
+		}
+		clearInterval(endinterv)
+		clearInterval(endinterv1)
+		clearInterval(endinterv2)
+	}
+	setTimeout(proverka,5000)
+
+	</script>
+</body>
+</html>
